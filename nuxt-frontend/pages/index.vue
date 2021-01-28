@@ -22,14 +22,14 @@
           :topic="topic"
         />
       </v-col>
-      <v-col
-        cols="3"
-      />
+     
+      <about />
     </v-row>
   </v-card>
 </template>
 
 <script>
+import About from '../components/topics/About.vue';
 import Card from '../components/topics/Card';
 import MyToolbar from '../components/topics/MyToolbar.vue';
 
@@ -38,6 +38,7 @@ export default {
   components: {
     Card,
     MyToolbar,
+    About,
   
     
     

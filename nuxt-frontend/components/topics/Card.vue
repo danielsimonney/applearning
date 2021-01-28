@@ -6,36 +6,34 @@
       outlined
       elevation="1"
     >
-      <v-list-item three-line>
+      <v-list-item>
         <v-card-text>
-          <v-card-title class="mb-4 blue--text display-2">
+          <v-card-title class="mb-4 mr-0 pr-0 font-weight-bold">
             {{ topic.title }}
           </v-card-title>
-          <v-card-text>
+          <div>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, nisi. Quaerat fuga ducimus voluptatibus eius delectus magnam, dignissimos neque, repudiandae, numquam eos iusto? Tenetur, maxime doloribus! Exercitationem ratione deserunt quasi!
-          </v-card-text>
+          </div>
+          <v-divider class="mb-5 mt-5" />
+          <div class="d-flex justify-space-around align-center">
+            <span>
+              <v-avatar
+                color="indigo"
+                size="30"
+              >
+                <span class="white--text headline">DS</span>
+              </v-avatar> Posted by {{ topic.user.email }}
 
-          <v-card-text class="headline mb-4">
-            Created by {{ topic.user.name }} {{ topic.created_at }}
-          </v-card-text>
+            </span>
+            <span>
+              {{ topic.created_at }}
+            </span>
+            <span>
+              50
+            </span>
+          </div>
         </v-card-text>
-
-        <v-list-item-avatar
-          tile
-          size="80"
-          color="#FFFFFF"
-        />
       </v-list-item>
-
-      <v-card-actions>
-        <v-btn
-          outlined
-          rounded
-          text
-        >
-          See more
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </div>
 </template>
