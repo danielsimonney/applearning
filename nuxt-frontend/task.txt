@@ -1,0 +1,4 @@
+Bind les attributs au boutton
+Régler espacement form
+layout navbar connecté
+layout navbar non connecté
