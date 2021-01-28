@@ -9,13 +9,22 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Post extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
-    protected $fillable=['body'];
-    public function user(){
+    protected $fillable = ['body'];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    public function topic(){
+
+    public function topic()
+    {
         return $this->belongsTo(Topic::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

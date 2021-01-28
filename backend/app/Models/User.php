@@ -13,13 +13,21 @@ class User extends Authenticatable implements JWTSubject
     use HasFactory, Notifiable;
 
 
-    public function ownTopic(Topic $topic){
+    public function ownTopic(Topic $topic)
+    {
         return $this->id === $topic->user->id;
     }
 
-    public function ownPost(Post $post){
-        return $this->id===$post->user->id;
+    public function ownPost(Post $post)
+    {
+        return $this->id === $post->user->id;
     }
+
+    public function ownComment(Comment $comment)
+    {
+        return $this->id === $comment->user->id;
+    }
+
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

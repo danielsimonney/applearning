@@ -15,24 +15,25 @@ class Post extends JsonResource
     public function toArray($request)
     {
         // if($this->getFirstMediaUrl()){
-        return[
-            'id'=>$this->id,
-            'body'=>$this->body,
-            'created_at'=> $this->created_at->diffForHumans(),
+        return [
+            'id' => $this->id,
+            'body' => $this->body,
+            'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
             'user' => $this->user,
-            'file'=> $this->media->map(function ($media) {
+            'comments' => $this->comments,
+            'file' => $this->media->map(function ($media) {
                 return $media->getFullUrl();
-           })
+            })
         ];
-    // }else{
-    //     return[
-    //         'id'=>$this->id,
-    //         'body'=>$this->body,
-    //         'created_at'=> $this->created_at->diffForHumans(),
-    //         'updated_at' => $this->updated_at->diffForHumans(),
-    //         'user' => $this->user,
-    //     ];
-    // }
+        // }else{
+        //     return[
+        //         'id'=>$this->id,
+        //         'body'=>$this->body,
+        //         'created_at'=> $this->created_at->diffForHumans(),
+        //         'updated_at' => $this->updated_at->diffForHumans(),
+        //         'user' => $this->user,
+        //     ];
+        // }
     }
 }

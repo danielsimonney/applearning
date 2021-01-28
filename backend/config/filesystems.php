@@ -42,6 +42,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'testExcel' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/excel'),
+            'url' => env('APP_URL').'/storage/excel',
+            'visibility' => 'public',
+        ],
+
         'media' => [
             'driver' => 'local',
             'root' => storage_path('app/public/media'),

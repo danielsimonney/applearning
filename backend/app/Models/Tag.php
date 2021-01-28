@@ -9,7 +9,10 @@ class Tag extends Model
 {
     use HasFactory;
 
-    public function topics() {
+    protected $fillable = ['name'];
+
+    public function topics()
+    {
         return $this->belongsToMany('App\Models\Topic');
     }
 }

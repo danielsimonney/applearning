@@ -7,19 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\Orderable;
 
 class Topic extends Model
-{   use HasFactory;
+{
+    use HasFactory;
     use Orderable;
 
-    protected $fillable=['title'];
-    public function user(){
+    protected $fillable = ['title'];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function tags() {
+    public function tags()
+    {
         return $this->belongsToMany('App\Models\Tag');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     // Supprime les entrees de la table pivot au delete d'un topic

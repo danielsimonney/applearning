@@ -16,13 +16,14 @@ class Topic extends JsonResource
     public function toArray($request)
     {
         // return parent::toArray($request);
-        return[
-            'id'=>$this->id,
-            'title'=>$this->title,
-            'created_at'=> $this->created_at->diffForHumans(),
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
-            'posts' =>PostResource::collection($this->posts),
-            'tags'=>Tag::collection($this->tags),
+            'posts' => PostResource::collection($this->posts),
+            'tags' => Tag::collection($this->tags),
+            'comments' => $this->comments,
             'user' => $this->user,
         ];
     }
