@@ -10,7 +10,7 @@
       <v-col
         cols="3"
       >
-        <my-toolbar />
+        <right-bar />
       </v-col>
       <v-col
         cols="6"
@@ -31,18 +31,18 @@
 <script>
 import About from '../components/topics/About.vue';
 import Card from '../components/topics/Card';
-import MyToolbar from '../components/topics/MyToolbar.vue';
+import RightBar from '../components/topics/RightBar.vue';
 
 
 export default {
   components: {
     Card,
-    MyToolbar,
     About,
   
     
     
-  },
+
+    RightBar  },
   layout:"default",
   //  middleware:['auth'],
 

@@ -30,14 +30,14 @@
           >
             <span class="white--text headline">DS</span>
           </v-avatar><span class="ml-2">{{ item.username }}</span></span>
-          <span> {{ item.likes }} k</span>
+          <v-list-item-action><span> {{ item.likes }} k</span> </v-list-item-action>
           <!-- <v-list-item-content class="blue--text">
             
             <v-list-item-title v-text="item.username" />
           </v-list-item-content>
           <v-list-item-action>
            
-          </v-list-item-action> -->
+          -->
         </v-list-item>
       </v-list>
     </v-card>

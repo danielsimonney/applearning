@@ -37,7 +37,8 @@
 
 <script>
   export default {
-    data: () => ({
+    data() {
+      return{
       selectedItem: 0,
       items: [
         { text: 'Menu'},
@@ -46,7 +47,8 @@
         { text: 'Starred', icon: 'mdi-star' },
         { text: 'Recent', icon: 'mdi-history' },
       ],
-    }),
+      }
+    },
   }
 </script>
 
