@@ -32,6 +32,15 @@
               50
             </span>
           </div>
+          <div class="d-flex justify-center mt-3 mb-3">
+            <v-btn
+              color="success"
+              :to="{name:'topics-id',params:{id:topic.id}}"
+              dark
+            >
+              See more
+            </v-btn>
+          </div>
         </v-card-text>
       </v-list-item>
     </v-card>

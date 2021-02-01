@@ -1,20 +1,63 @@
 <template>
-  <div class="mb-6">
-    <v-toolbar
-      dark
-      color="blue-grey darken-1"
-      class="hidden-sm-and-down"
-    >
-      <v-toolbar-title>
-        <nuxt-link
-          class="nav-link"
-          to="/"
+  <div class="">
+    <div class="d-flex">
+      <v-row class="align-center">
+        <v-col
+          cols="3"
         >
-          Topipost
-        </nuxt-link>
-      </v-toolbar-title>
-      <v-spacer />
-      <v-toolbar-items>
+          <v-toolbar-title>
+            <nuxt-link
+              class="nav-link"
+              to="/"
+            >
+              Topipost
+            </nuxt-link>
+          </v-toolbar-title>
+        </v-col>
+        <v-col
+          class="justify-center d-flex"
+          cols="4"
+        >
+          <v-text-field
+            solo-inverted
+            flat
+            hide-details
+            placeholder="search for topics"
+            prepend-inner-icon="mdi-magnify"
+            single-line
+          />
+        </v-col>
+        <v-col
+          cols="3"
+        >
+          <v-btn
+            v-if="authPage"
+            to="/"
+          >
+            Homepage
+          </v-btn>
+
+          <template v-else>
+            <v-btn v-if="isAuthenticated">
+              Account
+            </v-btn>
+            <v-btn
+              v-else
+              to="/auth"
+            >
+              Authentification
+            </v-btn>
+          </template>
+        </v-col>
+      </v-row>
+
+      
+
+    
+
+     
+
+      <!-- <v-toolbar-items>
         <v-btn
           v-for="item in nav"
           :key="item.icon"
@@ -24,8 +67,8 @@
         >
           {{ item.text }}
         </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
+      </v-toolbar-items> -->
+    </div>
       
     <v-toolbar
       dark
@@ -96,8 +139,10 @@
 <script>
   export default {
      data () {
+
     return {
       dialog: false,
+      isAuthenticated: false,
       nav: [
         {
           icon: 'mdi-home',
@@ -129,10 +174,35 @@
         }
       ]
     }
-  }
+  },
+  computed: {
+    authPage() {
+      return this.$route.path == '/auth'
+    },
+    
+      status() {
+          if(this.user){
+            return "connected"
+          }else{
+            if(this.$router.currentRoute.name=="auth"){
+              return "inlogin"
+            }else{
+              return "unconnected"
+            }
+          }
+        }
+
+  },
+     mounted(){
+        console.log("router")
+        
+        console.log(this.status)
+      }
   }
 </script>
 
 <style>
-
+.inputGrey .v-input__slot{
+  background-color: red;
+}
 </style>

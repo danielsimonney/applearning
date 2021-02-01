@@ -7,7 +7,7 @@
       Tell us more about you!
     </v-card-title>
     <text-input
-      v-model="form[email]"
+      v-model="form.email"
       placeholder="email"
     />
     <text-input

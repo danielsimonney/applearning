@@ -12,6 +12,10 @@
         color="transparent"
         nav
       >
+        <v-subheader class="mx-4">
+          Menu
+        </v-subheader>
+      
         <v-list-item-group
           v-model="selectedItem"
           active-class="border"
@@ -41,7 +45,6 @@
       return{
       selectedItem: 0,
       items: [
-        { text: 'Menu'},
         { text: 'My Files', icon: 'mdi-folder' },
         { text: 'Shared with me', icon: 'mdi-account-multiple' },
         { text: 'Starred', icon: 'mdi-star' },

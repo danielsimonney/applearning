@@ -1,30 +1,39 @@
 <template>
-  <v-card
+  <!-- <v-card
     class="cardBase mb-15 pr-10 pl-10"
     color="#FAFAFA"
+  > -->
+  <v-row
+    align="start"
+    justify="center"
   >
-    <v-row
-      align="start"
-      justify="center"
+    <v-col
+      cols="3"
+      class="d-flex justify-end"
     >
-      <v-col
-        cols="3"
-      >
-        <my-toolbar />
-      </v-col>
-      <v-col
-        cols="9"
-      >
-        <card-show :topic="topic" />
-      </v-col>
-    </v-row>
-  </v-card>
+      <right-bar />
+    </v-col>
+    <v-col
+      cols="9"
+    >
+      <card-show :topic="topic" />
+      <post
+        v-for="(post,index) in topic.posts"
+        :key="index"
+        class="mt-3 mb-3"
+        :post="post"
+      />
+    </v-col>
+  </v-row>
+  <!-- </v-card> -->
 </template>
 
 <script>
 import CardShow from '../../../components/topics/CardShow.vue'
+import Post from '../../../components/topics/Post.vue'
+import RightBar from '../../../components/topics/RightBar.vue'
   export default {
-  components: {CardShow  },
+  components: {CardShow, RightBar,Post  },
     async asyncData({params,$axios}) {
       try{
         const {data} = await $axios.$get(`/topics/${params.id}`)
@@ -40,42 +49,6 @@ import CardShow from '../../../components/topics/CardShow.vue'
       return{
         topic:'',
         body:''
-      }
-    },
-    computed: {
-      files() {
-        return Array.from(this.$refs.file.files).map(file => file)
-      }
-    },
-    methods:{
-      async create(){
-        let formData = new FormData()
-        this.files.forEach(file => {
-          formData.append('medias[]',file,file.name)
-        });
-        formData.append('body',this.body)
-
-console.log(this.files)
-
-        for (var key of formData.entries()) {
-        console.log(key[0] + ', ' + key[1]);
-    }
-         let config = {headers: {'content-type': 'multipart/form-data'}}
-          try{
-            let res = await this.$axios.$post(`/topics/${this.$route.params.id}/posts`,formData,config)
-            console.log(res)
-          this.$router.push('/topics')
-          }catch(err) {
-        console.log(err)
-          }
-      },
-      async deletePost(id){
-        try{
-          await this.$axios.$delete(`/topics/${this.$route.params.id}/posts/${id}`)
-          this.$router.push('/')
-        }catch(err){
-          console.log(err)
-        }
       }
     },
   }

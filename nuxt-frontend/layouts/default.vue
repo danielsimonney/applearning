@@ -4,10 +4,23 @@
       color="#3D5AF0"
       min-height="100vh"
     >
-      <navbar />
       <v-main>
-        <v-container>
-          <nuxt />
+        <v-container fluid>
+          <v-card
+            class="cardBase mb-15 rounded-xl"
+            color="#FAFAFA"
+          >
+            <!-- <v-card-title class="px-10 red"> -->
+            <navbar class="px-10 py-6 white" />
+            <!-- </v-card-title> -->
+            <v-divider
+              light
+              class="mb-5"
+            />
+            <v-card-text class="px-10">
+              <nuxt />
+            </v-card-text>
+          </v-card>
         </v-container>
       </v-main>
     </v-sheet>

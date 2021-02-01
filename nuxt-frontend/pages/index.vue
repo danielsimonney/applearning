@@ -1,31 +1,32 @@
 <template>
-  <v-card
-    class="cardBase mb-15 pr-10 pl-10"
+  <!-- <v-card
+    class="cardBase pr-10 pl-10"
     color="#FAFAFA"
+  > -->
+  <v-row
+    align="start"
+    justify="center"
   >
-    <v-row
-      align="start"
-      justify="center"
+    <v-col
+      cols="3"
+      class="d-flex justify-end"
     >
-      <v-col
-        cols="3"
-      >
-        <right-bar />
-      </v-col>
-      <v-col
-        cols="6"
-      >
-        <card
-          v-for="(topic,index) in topics"
-          :key="index"
-          class="mt-3 mb-3"
-          :topic="topic"
-        />
-      </v-col>
+      <right-bar />
+    </v-col>
+    <v-col
+      cols="6"
+    >
+      <card
+        v-for="(topic,index) in topics"
+        :key="index"
+        class="mt-3 mb-3"
+        :topic="topic"
+      />
+    </v-col>
      
-      <about />
-    </v-row>
-  </v-card>
+    <about />
+  </v-row>
+  <!-- </v-card> -->
 </template>
 
 <script>
@@ -63,7 +64,5 @@ export default {
 
 
 <style scoped>
-.cardBase{
-  margin-top:140px;
-}
+
 </style>

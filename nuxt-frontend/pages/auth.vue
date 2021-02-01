@@ -1,6 +1,7 @@
 <template>
   <v-card
-    class="elevation-8 ma-auto"
+    class="elevation-0 ma-auto"
+    color="#FAFAFA"
     :disabled="(loadingstate) ? true : false"
   >
     <v-row

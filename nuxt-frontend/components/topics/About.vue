@@ -1,10 +1,11 @@
 <template>
   <v-col
     cols="3"
+    class="d-flex flex-column"
   >
     <v-btn
       class="mb-3 mt-3"
-      x-large
+      large
       color="success"
       dark
     >

@@ -1,4 +1,6 @@
-Bind les attributs au boutton
-Régler espacement form
-layout navbar connecté
-layout navbar non connecté
+Créer body topic
+Boutton pour créer comment sur topic et show topic
+organisation de mes components
+Mettre links sur bouttons
+Page de création de topic et de post
+Catégories
