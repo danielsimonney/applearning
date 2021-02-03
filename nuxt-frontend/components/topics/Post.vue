@@ -7,21 +7,24 @@
     <v-list-item>
       <v-card-text>
         <div class="mb-5 mt-5">
-          <v-card-text class="pl-0 d-flex flex-row align-center">
-            <v-avatar
-              class="mr-2"
-              color="indigo"
-              size="30"
-            >
-              <span class="white--text headline">DS</span>
-            </v-avatar>
+          <avatar-rounded
+            v-if="isBetter==0"
+            :post="post"
+          />
+          <avatar-normal
+            v-else
+            :post="post"
+          >
+            <template #username="{ user }">
+              {{ user.id }}
+            </template>
             <div class="d-flex flex-column ml-4">
               {{ post.user.email }}
               <p class="font-weight-thin mb-0">
                 {{ post.created_at }}
               </p> 
             </div>
-          </v-card-text> 
+          </avatar-normal> 
         </div>
         <div>
           {{ post.body }}
@@ -52,8 +55,16 @@
 </template>
 
 <script>
+import AvatarNormal from '../UiElements/AvatarNormal.vue'
+import AvatarRounded from '../UiElements/AvatarRounded.vue'
 export default {
+  components: { AvatarNormal, AvatarRounded },
 props:{
+  isBetter:{
+     type:Number,
+  default:1,
+  },
+ 
    post:{
       type:Object,
       default:null,
@@ -70,6 +81,5 @@ mounted(){
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>

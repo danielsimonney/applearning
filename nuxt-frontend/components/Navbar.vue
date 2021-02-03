@@ -3,20 +3,26 @@
     <div class="d-flex">
       <v-row class="align-center">
         <v-col
+          class="d-flex justify-start"
           cols="3"
         >
-          <v-toolbar-title>
-            <nuxt-link
-              class="nav-link"
-              to="/"
-            >
-              Topipost
-            </nuxt-link>
-          </v-toolbar-title>
+          <!-- <div>loll</div> -->
+          
+          <nuxt-link
+            to="/"
+          >
+            <v-img
+              height="80"
+              width="auto"
+              contain
+              src="https://lh3.googleusercontent.com/proxy/txDnAMkiK9dcU5Vy6cDQdCpuBd-xyqXTQJWDAqXkfLK1rFq_BR6GtQqvC0jTSpEZ0nOnJZb2ssj4mshZR8Gg3GesBO00dWFEvCkps9lhy9wUzA"
+            />
+          </nuxt-link>
         </v-col>
         <v-col
           class="justify-center d-flex"
           cols="4"
+          offset="1"
         >
           <v-text-field
             solo-inverted
@@ -28,7 +34,9 @@
           />
         </v-col>
         <v-col
+          class="d-flex justify-end"
           cols="3"
+          offset="1"
         >
           <v-btn
             v-if="authPage"
@@ -137,6 +145,7 @@
 </template>
 
 <script>
+
   export default {
      data () {
 

@@ -20,7 +20,6 @@
               <span class="white--text headline">DS</span>
             </v-avatar>
             <div class="d-flex flex-column ml-4">
-              <!-- {{ topic.user.email }} -->
               <p class="font-weight-thin mb-0">
                 {{ topic.created_at }}
               </p> 
@@ -29,30 +28,45 @@
         </div>
         <div>
           (content of  the topic)
-          dd Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, nisi. Quaerat fuga ducimus voluptatibus eius delectus magnam, dignissimos neque, repudiandae, numquam eos iusto? Tenetur, maxime doloribus! Exercitationem ratione deserunt quasi!
+          Is there a cleaner way than foreach to get an array of all "label" values?
+          $methods[0]['label'] = 'test';
+          $methods[0]['nr']    = 99;
+          $methods[1]['label'] = 'whatever';
+          $methods[1]['nr']    = 10;
+          foreach($methods as $method) {
+          $methodsLabel[] = $method['label'];
+          }
         </div>
-        <div class="mt-5 subtitle-2">
-          {{ topic.posts.length }} answers
-        </div>
-        <div class="mt-5 subtitle-2">
-          {{ topic.comments.length }} comments
-          <v-btn
-            icon
-            @click="show = !show"
-          >
-            <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-          </v-btn>
-        </div>
-        <v-expand-transition>
-          <div v-show="show">
-            <comment
-              v-for="(comment,index) in topic.comments"
-              :key="index"
-              class="mt-3 mb-3"
-              :comment="comment"
-            />
+        <div class="mt-5 subtitle-2 d-flex flex-row justify-space-between align-center">
+          <div class="d-flex flex-row">
+            <v-icon
+              :color="(userLike==true) ? 'blue' : 'grey'"
+              @click="count(1)"
+            >
+              mdi-arrow-up
+            </v-icon>
+            <p
+              class="my-2"
+              :class="(userLike==false) ? 'red--text' : (userLike==true) ? 'blue--text' : 'grey--text'"
+            >
+              {{ likescount }}
+            </p>
+            <v-icon
+              :color="(userLike==false) ? 'red' : 'grey'"
+              @click="count(-1)"
+            >
+              mdi-arrow-down
+            </v-icon>
           </div>
-        </v-expand-transition>
+          <div>
+            <v-icon>
+              mdi-alert-octagon
+            </v-icon> Report this topic
+          </div>
+        </div>
+        <p class="mt-8">
+          {{ topic.posts.length }} answers
+        </p>
         <v-divider class="mb-5 mt-5" />
       </v-card-text>
     </v-list-item>
@@ -60,22 +74,34 @@
 </template>
 
 <script>
-import Comment from './Comment.vue'
 export default {
-  components: { Comment },
+  
 props:{
    topic:{
       type:Object,
       default:null,
     },
 },
- data(){
+data(){
         return{
-          show: false,
+          show:false,
+          likescount:0,
+          userLike:undefined
         }
       },
 mounted(){
-  console.log(this.topic)
+  this.likescount =  Math.floor(Math.random()*(1-1000) + 1000)
+},
+methods:{
+count(nb){
+if(this.userLike==undefined){
+  this.likescount+=nb
+nb==1 ? (this.userLike=true) : (this.userLike=false)
+}else{
+  alert("vous avez déjà donné votre avis")
+}
+
+}
 }
 }
 </script>

@@ -21,6 +21,7 @@
         v-for="(post,index) in topic.posts"
         :key="index"
         class="mt-3 mb-3"
+        :is-better="index"
         :post="post"
       />
     </v-col>
@@ -48,7 +49,7 @@ import RightBar from '../../../components/topics/RightBar.vue'
     data(){
       return{
         topic:'',
-        body:''
+        body:'',
       }
     },
   }

@@ -5,6 +5,7 @@
     color="#FAFAFA"
   >
     <v-navigation-drawer
+      width="300px"
       permanent
       color="transparent"
     >

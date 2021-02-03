@@ -11,7 +11,7 @@
             color="#FAFAFA"
           >
             <!-- <v-card-title class="px-10 red"> -->
-            <navbar class="px-10 py-6 white" />
+            <navbar class="px-10 py-10" />
             <!-- </v-card-title> -->
             <v-divider
               light
