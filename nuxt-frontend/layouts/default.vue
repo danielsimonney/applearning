@@ -18,7 +18,19 @@
               class="mb-5"
             />
             <v-card-text class="px-10">
-              <nuxt />
+              <v-row
+                align="start"
+                justify="center"
+              >
+                <v-col
+                  cols="3"
+                  class="d-flex justify-end"
+                >
+                  <right-bar />
+                </v-col>
+
+                <nuxt />
+              </v-row>
             </v-card-text>
           </v-card>
         </v-container>
@@ -29,8 +41,9 @@
 
 <script>
 import Navbar from '../components/Navbar.vue'
+import RightBar from '../components/topics/RightBar.vue'
 export default {
-  components: { Navbar },
+  components: { Navbar,RightBar },
   
 }
 </script>

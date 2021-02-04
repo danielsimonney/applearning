@@ -3,38 +3,25 @@
     class="cardBase mb-15 pr-10 pl-10"
     color="#FAFAFA"
   > -->
-  <v-row
-    align="start"
-    justify="center"
+  <v-col
+    cols="9"
   >
-    <v-col
-      cols="3"
-      class="d-flex justify-end"
-    >
-      <right-bar />
-    </v-col>
-    <v-col
-      cols="9"
-    >
-      <card-show :topic="topic" />
-      <post
-        v-for="(post,index) in topic.posts"
-        :key="index"
-        class="mt-3 mb-3"
-        :is-better="index"
-        :post="post"
-      />
-    </v-col>
-  </v-row>
-  <!-- </v-card> -->
+    <card-show :topic="topic" />
+    <post
+      v-for="(post,index) in topic.posts"
+      :key="index"
+      class="mt-3 mb-3"
+      :is-better="index"
+      :post="post"
+    />
+  </v-col>
 </template>
 
 <script>
 import CardShow from '../../../components/topics/CardShow.vue'
 import Post from '../../../components/topics/Post.vue'
-import RightBar from '../../../components/topics/RightBar.vue'
   export default {
-  components: {CardShow, RightBar,Post  },
+  components: {CardShow,Post  },
     async asyncData({params,$axios}) {
       try{
         const {data} = await $axios.$get(`/topics/${params.id}`)

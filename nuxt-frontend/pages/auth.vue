@@ -42,7 +42,7 @@ export default {
     Login,
     Register
   },
-  layout: 'default',
+  layout: 'auth',
   data() {
     return {
       loadingstate:null,

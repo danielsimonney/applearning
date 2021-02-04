@@ -1,18 +1,5 @@
 <template>
-  <!-- <v-card
-    class="cardBase pr-10 pl-10"
-    color="#FAFAFA"
-  > -->
-  <v-row
-    align="start"
-    justify="center"
-  >
-    <v-col
-      cols="3"
-      class="d-flex justify-end"
-    >
-      <right-bar />
-    </v-col>
+  <div>
     <v-col
       cols="6"
     >
@@ -23,27 +10,20 @@
         :topic="topic"
       />
     </v-col>
-     
     <about />
-  </v-row>
-  <!-- </v-card> -->
+  </div>
 </template>
 
 <script>
 import About from '../components/topics/About.vue';
 import Card from '../components/topics/Card';
-import RightBar from '../components/topics/RightBar.vue';
 
 
 export default {
   components: {
     Card,
     About,
-  
-    
-    
-
-    RightBar  },
+      },
   layout:"default",
   //  middleware:['auth'],
 
