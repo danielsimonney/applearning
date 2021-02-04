@@ -59,27 +59,26 @@ import AvatarNormal from '../UiElements/AvatarNormal.vue'
 import AvatarRounded from '../UiElements/AvatarRounded.vue'
 export default {
   components: { AvatarNormal, AvatarRounded },
-props:{
-  isBetter:{
-     type:Number,
-  default:1,
-  },
- 
-   post:{
-      type:Object,
-      default:null,
+  props: {
+    isBetter: {
+      type: Number,
+      default: 1,
     },
-},
-data(){
-        return{
-          show: false,
-        }
-      },
-mounted(){
-  console.log(this.post)
-}
+
+    post: {
+      type: Object,
+      default: null,
+    },
+  },
+  data() {
+    return {
+      show: false,
+    }
+  },
+  mounted() {
+    console.log(this.post)
+  },
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

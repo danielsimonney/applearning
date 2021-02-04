@@ -1,17 +1,17 @@
 import Vue from 'vue'
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 
 const User = {
   install(Vue) {
     Vue.mixin({
-      computed:{
+      computed: {
         ...mapGetters({
-          user:"profile/user",
-          authenticated:"profile/authenticated"
-        })
-      }
+          user: 'profile/user',
+          authenticated: 'profile/authenticated',
+        }),
+      },
     })
-  }
+  },
 }
 
 Vue.use(User)

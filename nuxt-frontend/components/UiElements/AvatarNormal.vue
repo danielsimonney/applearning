@@ -18,18 +18,16 @@
 
 <script>
 export default {
-props:{
-   post:{
-      type:Object,
-      default:null,
+  props: {
+    post: {
+      type: Object,
+      default: null,
     },
-},
-mounted(){
-  console.log(this.post)
-}
+  },
+  mounted() {
+    console.log(this.post)
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

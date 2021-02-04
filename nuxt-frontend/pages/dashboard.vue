@@ -60,43 +60,41 @@
 
 <script>
 export default {
-      async asyncData({$axios}) {
-        console.log("hi")
-      try{
-          let {data} = await $axios.$get('/tags')
-          console.log(data)
-          return{
-            tags:data,
-          }
-          }catch(err) {
-        console.log(err)
-          }
-    },
-      data(){
-        return{
-          form:{
-            title:'',
-            body:'',
-            tags:[],
-          },
-          tags:[],
-          // tagsChecked:[],
-        }
-      },
-      methods:{
-        async create(){
-          console.log(this.form)
-          try{
-            await this.$axios.$post('/topics',this.form)
-          this.$router.push('/')
-          }catch(err) {
-        console.log(err)
-          }
-        },
-      },
+  async asyncData({ $axios }) {
+    console.log('hi')
+    try {
+      let { data } = await $axios.$get('/tags')
+      console.log(data)
+      return {
+        tags: data,
+      }
+    } catch (err) {
+      console.log(err)
     }
+  },
+  data() {
+    return {
+      form: {
+        title: '',
+        body: '',
+        tags: [],
+      },
+      tags: [],
+      // tagsChecked:[],
+    }
+  },
+  methods: {
+    async create() {
+      console.log(this.form)
+      try {
+        await this.$axios.$post('/topics', this.form)
+        this.$router.push('/')
+      } catch (err) {
+        console.log(err)
+      }
+    },
+  },
+}
 </script>
 
-<style>
-
-</style>
+<style></style>

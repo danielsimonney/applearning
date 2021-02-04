@@ -10,22 +10,16 @@
 <script>
 export default {
   props: {
-    value:{
-      type:String,
-      default:null,
-    }
-},
-   data() {
-    return {
-    }
+    value: {
+      type: String,
+      default: null,
+    },
   },
-  computed: {
-
+  data() {
+    return {}
   },
-  mounted() {
-    
-  },
-
+  computed: {},
+  mounted() {},
 }
 </script>
 

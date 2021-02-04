@@ -35,17 +35,17 @@
 </template>
 
 <script>
-import Login from '~/components/auth/Login.vue';
-import Register from '~/components/auth/Register.vue';
+import Login from '~/components/auth/Login.vue'
+import Register from '~/components/auth/Register.vue'
 export default {
   components: {
     Login,
-    Register
+    Register,
   },
   layout: 'auth',
   data() {
     return {
-      loadingstate:null,
+      loadingstate: null,
       error: false,
       form: {
         name: null,
@@ -55,12 +55,12 @@ export default {
   },
 
   methods: {
-    signup(){
-      this.loadingstate="register"
+    signup() {
+      this.loadingstate = 'register'
     },
-  login(){
-    this.loadingstate="login"
-  },
+    login() {
+      this.loadingstate = 'login'
+    },
   },
 }
 </script>

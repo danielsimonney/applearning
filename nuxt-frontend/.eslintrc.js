@@ -12,7 +12,7 @@ module.exports = {
     'prettier/vue',
     'eslint:recommended',
     'plugin:vue/recommended',
-    // 'plugin:prettier-vue/recommended',
+    'plugin:prettier-vue/recommended',
   ],
   plugins: ['vue', 'prettier'],
   rules: {
@@ -23,6 +23,18 @@ module.exports = {
     'vue/html-end-tags': 'error',
     'vue/no-multi-spaces': 'error',
     'vue/attribute-hyphenation': ['error', 'always'],
+    'prettier-vue/prettier': [
+      'error',
+      {
+        // Override all options of `prettier` here
+        // @see https://prettier.io/docs/en/options.html
+        printWidth: 100,
+        singleQuote: true,
+        semi: false,
+        trailingComma: 'es5',
+        arrowParens: 'avoid',
+      },
+    ],
   },
   globals: {
     $nuxt: true,

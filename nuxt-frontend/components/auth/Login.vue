@@ -44,17 +44,17 @@ import TextInput from '../UiElements/TextInput.vue'
 export default {
   components: { TextInput, BaseButton },
   props: {
-   loading:{
-    type: String,
-   default:null
-   }
-},
+    loading: {
+      type: String,
+      default: null,
+    },
+  },
   data() {
     return {
       form: {
-        email:'',
-        password:'',
-      }
+        email: '',
+        password: '',
+      },
     }
   },
   mounted() {
@@ -62,8 +62,8 @@ export default {
   },
   methods: {
     toto(e) {
-      console.log(e);
-    }
-  }
+      console.log(e)
+    },
+  },
 }
 </script>

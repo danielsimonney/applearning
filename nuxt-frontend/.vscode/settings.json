@@ -1,9 +1,18 @@
 {
   "editor.codeActionsOnSave": {
-      "source.fixAll": true
+      "source.fixAll.eslint": true,
   },
-  // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // "[javascript]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // }
+  "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "vue",
+  ],
+  "eslint.alwaysShowStatus": true,
+  "eslint.workingDirectories": [
+      "./"
+  ],
+  "editor.quickSuggestions": {
+    "strings": true,
+  },
+  "debug.javascript.usePreview": false
 }

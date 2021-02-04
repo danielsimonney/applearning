@@ -28,8 +28,12 @@
                 >
                   <right-bar />
                 </v-col>
-
-                <nuxt />
+                <v-col cols="6">
+                  <nuxt />
+                </v-col>
+                <v-col cols="3">
+                  <about />
+                </v-col>
               </v-row>
             </v-card-text>
           </v-card>
@@ -40,10 +44,10 @@
 </template>
 
 <script>
+import About from '~/components/topics/About.vue'
 import Navbar from '../components/Navbar.vue'
 import RightBar from '../components/topics/RightBar.vue'
 export default {
-  components: { Navbar,RightBar },
-  
+  components: { Navbar, RightBar, About },
 }
 </script>

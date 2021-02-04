@@ -15,33 +15,27 @@
 <script>
 export default {
   props: {
-    value:{
-      type:String,
-      default:null,
+    value: {
+      type: String,
+      default: null,
     },
-    text:{
-      type:String,
-      default:null,
-    }
-},
-   data() {
-    return {
-    }
+    text: {
+      type: String,
+      default: null,
+    },
   },
-  computed: {
-
+  data() {
+    return {}
   },
-  mounted() {
-    
-  },
-
+  computed: {},
+  mounted() {},
 }
 </script>
 <style scoped>
-.btn-basic{
+.btn-basic {
   font-size: 20px;
   border-radius: 50px;
   color: white;
-  background-color: #90D2E7;
+  background-color: #90d2e7;
 }
 </style>

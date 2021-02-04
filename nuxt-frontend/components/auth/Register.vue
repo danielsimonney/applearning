@@ -34,42 +34,40 @@
 </template>
 
 <script>
-import TextInput from '../UiElements/TextInput.vue';
+import TextInput from '../UiElements/TextInput.vue'
 import BaseButton from '../UiElements/BaseButton.vue'
 
 export default {
-  components:{
+  components: {
     TextInput,
-    BaseButton
+    BaseButton,
   },
   props: {
-   loading:{
-    type:String,
-   default:null
-   }
-},
-   data() {
+    loading: {
+      type: String,
+      default: null,
+    },
+  },
+  data() {
     return {
       form: {
-        email:'',
-        password:'',
-        name:'',
-        confirmation:''
-      }
+        email: '',
+        password: '',
+        name: '',
+        confirmation: '',
+      },
     }
   },
   computed: {
     shouldDisplayLoadingSpinner() {
-      return (this.loading && this.loading=='register') ? true : false;
+      return this.loading && this.loading == 'register' ? true : false
     },
-    shouldDisplayLoading(){
-      return (this.loading) ? true : false;
+    shouldDisplayLoading() {
+      return this.loading ? true : false
     },
-
   },
   mounted() {
     console.log(this.loading)
   },
-
 }
 </script>

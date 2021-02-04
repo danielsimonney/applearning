@@ -145,10 +145,8 @@
 </template>
 
 <script>
-
-  export default {
-     data () {
-
+export default {
+  data() {
     return {
       dialog: false,
       isAuthenticated: false,
@@ -157,61 +155,60 @@
           icon: 'mdi-home',
           text: 'Home',
           title: 'Back to Home page',
-          link:'/',
-          active: true
+          link: '/',
+          active: true,
         },
         {
           icon: 'mdi-folder-plus',
           text: 'Create',
           title: 'Create new topic',
-          link:'/create',
-          active: false
+          link: '/create',
+          active: false,
         },
         {
           icon: 'mdi-account-circle',
           text: 'Account',
           title: 'Your profile',
-          link:'/profile',
-          active: false
+          link: '/profile',
+          active: false,
         },
         {
           icon: 'mdi-login-variant',
           text: 'Auth',
           title: 'Go login',
-          link:'/auth',
-          active: false
-        }
-      ]
+          link: '/auth',
+          active: false,
+        },
+      ],
     }
   },
   computed: {
     authPage() {
       return this.$route.path == '/auth'
     },
-    
-      status() {
-          if(this.user){
-            return "connected"
-          }else{
-            if(this.$router.currentRoute.name=="auth"){
-              return "inlogin"
-            }else{
-              return "unconnected"
-            }
-          }
-        }
 
-  },
-     mounted(){
-        console.log("router")
-        
-        console.log(this.status)
+    status() {
+      if (this.user) {
+        return 'connected'
+      } else {
+        if (this.$router.currentRoute.name == 'auth') {
+          return 'inlogin'
+        } else {
+          return 'unconnected'
+        }
       }
-  }
+    },
+  },
+  mounted() {
+    console.log('router')
+
+    console.log(this.status)
+  },
+}
 </script>
 
 <style>
-.inputGrey .v-input__slot{
+.inputGrey .v-input__slot {
   background-color: red;
 }
 </style>

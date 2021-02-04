@@ -34,24 +34,24 @@
 
 <script>
 export default {
-props:{
-   post:{
-      type:Object,
-      default:null,
+  props: {
+    post: {
+      type: Object,
+      default: null,
     },
-},
+  },
 }
 </script>
 
 <style scoped>
-.containAvatar{
-border:solid #38C31C 2px;
+.containAvatar {
+  border: solid #38c31c 2px;
 }
 
-.greenTick{
-position:absolute;
-top: 44px;
-left: 61px;
-z-index: 1000;
+.greenTick {
+  position: absolute;
+  top: 44px;
+  left: 61px;
+  z-index: 1000;
 }
 </style>

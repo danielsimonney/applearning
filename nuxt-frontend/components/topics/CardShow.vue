@@ -75,37 +75,33 @@
 
 <script>
 export default {
-  
-props:{
-   topic:{
-      type:Object,
-      default:null,
+  props: {
+    topic: {
+      type: Object,
+      default: null,
     },
-},
-data(){
-        return{
-          show:false,
-          likescount:0,
-          userLike:undefined
-        }
-      },
-mounted(){
-  this.likescount =  Math.floor(Math.random()*(1-1000) + 1000)
-},
-methods:{
-count(nb){
-if(this.userLike==undefined){
-  this.likescount+=nb
-nb==1 ? (this.userLike=true) : (this.userLike=false)
-}else{
-  alert("vous avez déjà donné votre avis")
-}
-
-}
-}
+  },
+  data() {
+    return {
+      show: false,
+      likescount: 0,
+      userLike: undefined,
+    }
+  },
+  mounted() {
+    this.likescount = Math.floor(Math.random() * (1 - 1000) + 1000)
+  },
+  methods: {
+    count(nb) {
+      if (this.userLike == undefined) {
+        this.likescount += nb
+        nb == 1 ? (this.userLike = true) : (this.userLike = false)
+      } else {
+        alert('vous avez déjà donné votre avis')
+      }
+    },
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

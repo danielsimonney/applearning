@@ -20,15 +20,10 @@ export default {
   css: [],
 
   router: {
-    middleware: [
-      'clearValidationErrors',
-    ]
+    middleware: ['clearValidationErrors'],
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    './plugins/mixins/user.js',
-    './plugins/mixins/validation.js',
-  ],
+  plugins: ['./plugins/mixins/user.js', './plugins/mixins/validation.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -58,7 +53,7 @@ export default {
       login: '/auth',
       logout: '/',
       callback: '/auth',
-      home: '/'
+      home: '/',
     },
     strategies: {
       local: {
