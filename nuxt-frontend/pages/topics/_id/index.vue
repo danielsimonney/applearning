@@ -3,9 +3,7 @@
     class="cardBase mb-15 pr-10 pl-10"
     color="#FAFAFA"
   > -->
-  <v-col
-    cols="9"
-  >
+  <div>
     <card-show :topic="topic" />
     <post
       v-for="(post,index) in topic.posts"
@@ -14,7 +12,7 @@
       :is-better="index"
       :post="post"
     />
-  </v-col>
+  </div>
 </template>
 
 <script>
