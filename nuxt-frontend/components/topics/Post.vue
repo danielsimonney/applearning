@@ -32,6 +32,7 @@
         <div class="mt-5 subtitle-2">
           {{ post.comments.length }} comments
           <v-btn
+            v-show="post.comments.length!=0"
             icon
             @click="show = !show"
           >
@@ -46,8 +47,48 @@
               class="mt-3 mb-3"
               :comment="comment"
             />
+            <div>
+              <p>Write your comment</p>
+              <v-textarea
+                v-model="commentAnswer"
+                label="Be polite and not more than 250 characters"
+                placeholder="write your answer here"
+                hint="Be polite"
+                outlined
+                rows="3"
+                row-height="45"
+                class="mb-5"
+              />
+              <create-button
+                text="Post your comment"
+                :loading="loadingstate"
+                :disabled="loadingstate"
+                @click="create"
+              />
+            </div>
           </div>
         </v-expand-transition>
+        <div v-show="post.comments.length==0">
+          <div>
+            <p>Write your comment</p>
+            <v-textarea
+              v-model="commentAnswer"
+              placeholder="write your answer here"
+              label="Be polite and not more than 250 characters"
+              hint="Be polite"
+              outlined
+              rows="3"
+              row-height="45"
+              class="mb-5"
+            />
+            <create-button
+              text="Post your comment"
+              :loading="loadingstate"
+              :disabled="loadingstate"
+              @click="create"
+            />
+          </div>
+        </div>
         <v-divider class="mb-5 mt-5" />
       </v-card-text>
     </v-list-item>
@@ -72,11 +113,19 @@ export default {
   },
   data() {
     return {
+      loadingstate: null,
+      commentAnswer: null,
       show: false,
     }
   },
   mounted() {
     console.log(this.post)
+  },
+
+  methods: {
+    create() {
+      this.loadingstate = true
+    },
   },
 }
 </script>

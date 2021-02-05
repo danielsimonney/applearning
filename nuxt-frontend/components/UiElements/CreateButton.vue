@@ -1,9 +1,6 @@
 <template>
   <v-btn
     class="btn-basic"
-    min-width="200px"
-    height="70px"
-    rounded
     outlined
     v-bind="$attrs"
     @click="$emit('click', $event)"
@@ -34,8 +31,8 @@ export default {
 <style scoped>
 .btn-basic {
   font-size: 20px;
-  border-radius: 50px;
+  border-radius: 10px;
   color: white;
-  background-color: #90d2e7;
+  background-color: #5d35f9;
 }
 </style>

@@ -36,6 +36,12 @@
         />
       </div>
     </div>
+    <v-file-input
+      outlined
+      multiple
+      label="File input"
+      dense
+    />
     <base-button
       text="Create topic"
       :loading="loadingstate"

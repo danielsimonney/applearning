@@ -12,14 +12,29 @@
       :is-better="index"
       :post="post"
     />
+    <div class="justify-center d-flex">
+      <base-button
+        v-show="!show"
+        text="Répondre au topic"
+        @click="show = !show"
+      />
+    </div>
+    
+    <v-expand-transition>
+      <div v-show="show">
+        <form-post @close="show = !show" />
+      </div>
+    </v-expand-transition>
   </div>
 </template>
 
 <script>
 import CardShow from '../../../components/topics/CardShow.vue'
+import FormPost from '../../../components/topics/FormPost.vue'
 import Post from '../../../components/topics/Post.vue'
+import BaseButton from '../../../components/UiElements/BaseButton.vue'
 export default {
-  components: { CardShow, Post },
+  components: { CardShow, Post, BaseButton, FormPost },
   async asyncData({ params, $axios }) {
     try {
       const { data } = await $axios.$get(`/topics/${params.id}`)
@@ -33,6 +48,7 @@ export default {
   },
   data() {
     return {
+      show: false,
       topic: '',
       body: '',
     }

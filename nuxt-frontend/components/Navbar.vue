@@ -15,7 +15,7 @@
               height="80"
               width="auto"
               contain
-              src="https://lh3.googleusercontent.com/proxy/txDnAMkiK9dcU5Vy6cDQdCpuBd-xyqXTQJWDAqXkfLK1rFq_BR6GtQqvC0jTSpEZ0nOnJZb2ssj4mshZR8Gg3GesBO00dWFEvCkps9lhy9wUzA"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWGdvhnIjfJLOwLGoOeHpINrvpkMrOcSOSzw&usqp=CAU"
             />
           </nuxt-link>
         </v-col>
