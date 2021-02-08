@@ -2,7 +2,7 @@
   <v-col cols="3">
     <v-checkbox
       v-bind="$attrs"
-      @change="$emit('input',$event)"
+      @change="$emit('input ',$event)"
     />
   </v-col>
 </template>

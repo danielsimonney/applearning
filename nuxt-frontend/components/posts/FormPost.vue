@@ -15,7 +15,7 @@
     
     <v-textarea
       v-model="form.body"
-      label="Topic description"
+      label="Post description"
       hint="Give the clearer answer please"
       outlined
       rows="3"

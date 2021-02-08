@@ -7,6 +7,28 @@
   >
     <v-list-item>
       <v-card-text>
+        <create-button
+          :to="`/topics/${topic.id}/edit`"
+          color="warning"
+          text="Edit"
+        >
+          mdi-pencil
+        </create-button>
+
+        <create-button
+          text="delete"
+          color="error"
+          @click="dialog=true"
+        >
+          mdi-delete
+        </create-button>
+        <accept-modal
+          v-if="dialog"
+          title="Are you sure you really want to supress this topic ??"
+          answer="This action is irrevocable and you won't have the possibility to retrieve this topic. All the posts linked to this topic wil be supressed forever"
+          @agree="dialog=false"
+          @disagree="dialog=false"
+        />
         <v-card-title class="mb-0 pb-0 mr-0 pl-0 font-weight-bold">
           {{ topic.title }}
         </v-card-title>
@@ -74,7 +96,10 @@
 </template>
 
 <script>
+import AcceptModal from '../UiElements/AcceptModal.vue'
+import CreateButton from '../UiElements/CreateButton.vue'
 export default {
+  components: { CreateButton, AcceptModal },
   props: {
     topic: {
       type: Object,
@@ -86,6 +111,7 @@ export default {
       show: false,
       likescount: 0,
       userLike: undefined,
+      dialog: false,
     }
   },
   mounted() {

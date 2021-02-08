@@ -30,12 +30,15 @@
 
 <script>
 import CardShow from '../../../components/topics/CardShow.vue'
-import FormPost from '../../../components/topics/FormPost.vue'
-import Post from '../../../components/topics/Post.vue'
+import FormPost from '../../../components/posts/FormPost.vue'
+import Post from '../../../components/posts/Post.vue'
 import BaseButton from '../../../components/UiElements/BaseButton.vue'
 export default {
-  components: { CardShow, Post, BaseButton, FormPost },
+  components: { Post, BaseButton, FormPost, CardShow },
   async asyncData({ params, $axios }) {
+    console.log('arar')
+    console.log(params.id)
+
     try {
       const { data } = await $axios.$get(`/topics/${params.id}`)
       console.log(data)

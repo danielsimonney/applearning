@@ -26,16 +26,11 @@
     <p class="font-weight-black">
       Add tags
     </p>
-    <div class="tagsList rounded-lg my-5">
-      <div class="px-4 py-3 d-flex wrap row">
-        <base-checkbox
-          v-for="(tag,index) in tags"
-          :key="index"
-          :label="tag.name"
-          @input="toggleCheckbox($event,tag.id)"
-        />
-      </div>
-    </div>
+
+    <check-box-tags
+      v-model="form.tags"
+      :tags="tags"
+    />
     <v-file-input
       outlined
       multiple
@@ -52,18 +47,19 @@
 </template>
 
 <script>
-import BaseButton from '../components/UiElements/BaseButton.vue'
-import BaseCheckbox from '../components/UiElements/baseCheckbox.vue'
-import TextInput from '../components/UiElements/TextInput.vue'
+import CheckBoxTags from '~/components/forms/CheckBoxTags.vue'
+import BaseButton from '../../components/UiElements/BaseButton.vue'
+import TextInput from '../../components/UiElements/TextInput.vue'
 export default {
-  components: { TextInput, BaseCheckbox, BaseButton },
+  components: { TextInput, BaseButton, CheckBoxTags },
   async asyncData({ $axios }) {
     console.log('hi')
     try {
+      let finaleData = {}
       let { data } = await $axios.$get('/tags')
-      console.log(data)
+      finaleData.existant = data
       return {
-        tags: data,
+        tags: finaleData,
       }
     } catch (err) {
       console.log(err)

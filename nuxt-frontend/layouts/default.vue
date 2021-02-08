@@ -26,7 +26,7 @@
                   cols="3"
                   class="d-flex justify-end"
                 >
-                  <right-bar />
+                  <left-bar />
                 </v-col>
                 <v-col cols="9">
                   <nuxt />
@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import Navbar from '../components/Navbar.vue'
-import RightBar from '../components/topics/RightBar.vue'
+import LeftBar from '../components/homepage/LeftBar.vue'
+import Navbar from '../components/layouts/Navbar.vue'
 export default {
-  components: { Navbar, RightBar },
+  components: { Navbar, LeftBar },
 }
 </script>

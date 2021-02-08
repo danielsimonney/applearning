@@ -3,11 +3,6 @@
     <div
       class="containAvatar rounded-circle"
     >
-      <div class="greenTick">
-        <v-icon color="#38C31C">
-          mdi-check-circle
-        </v-icon>
-      </div>
       <v-avatar
         class="my-1 mx-1 pa-2"
         color="indigo"
@@ -18,6 +13,12 @@
         </span>
       </v-avatar>
     </div>
+    <div class="greenTick ml-n2 mt-n5">
+      <v-icon color="#38C31C">
+        mdi-check-circle
+      </v-icon>
+    </div>
+
     <div class="d-flex flex-column ml-4">
       {{ post.user.email }}
       <p class="font-weight-thin mb-0">
@@ -49,9 +50,6 @@ export default {
 }
 
 .greenTick {
-  position: absolute;
-  top: 44px;
-  left: 61px;
   z-index: 1000;
 }
 </style>

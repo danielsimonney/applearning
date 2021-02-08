@@ -162,7 +162,7 @@ export default {
           icon: 'mdi-folder-plus',
           text: 'Create',
           title: 'Create new topic',
-          link: '/create',
+          link: '/topics/create',
           active: false,
         },
         {

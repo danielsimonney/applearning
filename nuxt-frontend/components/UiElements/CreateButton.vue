@@ -1,10 +1,13 @@
 <template>
   <v-btn
     class="btn-basic"
-    outlined
+    depressed
     v-bind="$attrs"
     @click="$emit('click', $event)"
   >
+    <v-icon class="mr-3">
+      <slot />
+    </v-icon>
     {{ text }} 
   </v-btn>
 </template>
@@ -30,9 +33,7 @@ export default {
 </script>
 <style scoped>
 .btn-basic {
-  font-size: 20px;
+  font-size: 15px;
   border-radius: 10px;
-  color: white;
-  background-color: #5d35f9;
 }
 </style>

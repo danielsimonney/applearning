@@ -6,6 +6,32 @@
   >
     <v-list-item>
       <v-card-text>
+        <create-button
+          :to="`/topics/posts/${post.id}/edit`"
+          color="warning"
+          text="Edit"
+          :loading="loadingstate"
+          :disabled="loadingstate"
+        >
+          mdi-pencil
+        </create-button>
+
+        <create-button
+          text="delete"
+          color="error"
+          :loading="loadingstate"
+          :disabled="loadingstate"
+          @click="dialog=true"
+        >
+          mdi-delete
+        </create-button>
+        <accept-modal
+          v-if="dialog"
+          title="Are you sure you really want to supress this post ??"
+          answer="This action is irrevocable and you won't have the possibility to retrieve this post."
+          @agree="dialog=false"
+          @disagree="dialog=false"
+        />
         <div class="mb-5 mt-5">
           <avatar-rounded
             v-if="isBetter==0"
@@ -60,11 +86,14 @@
                 class="mb-5"
               />
               <create-button
-                text="Post your comment"
+                color="primary"
+                text="Post your comment mdi"
                 :loading="loadingstate"
                 :disabled="loadingstate"
                 @click="create"
-              />
+              > 
+                mdi-comment
+              </create-button>
             </div>
           </div>
         </v-expand-transition>
@@ -82,11 +111,14 @@
               class="mb-5"
             />
             <create-button
+              color="primary"
               text="Post your comment"
               :loading="loadingstate"
               :disabled="loadingstate"
               @click="create"
-            />
+            >
+              mdi-comment
+            </create-button>
           </div>
         </div>
         <v-divider class="mb-5 mt-5" />
@@ -96,10 +128,12 @@
 </template>
 
 <script>
+import AcceptModal from '../UiElements/AcceptModal.vue'
 import AvatarNormal from '../UiElements/AvatarNormal.vue'
 import AvatarRounded from '../UiElements/AvatarRounded.vue'
+import CreateButton from '../UiElements/CreateButton.vue'
 export default {
-  components: { AvatarNormal, AvatarRounded },
+  components: { AvatarNormal, AvatarRounded, AcceptModal, CreateButton },
   props: {
     isBetter: {
       type: Number,
@@ -113,6 +147,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       loadingstate: null,
       commentAnswer: null,
       show: false,

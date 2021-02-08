@@ -15,14 +15,11 @@
 </template>
 
 <script>
-import About from '../components/topics/About.vue'
-import Card from '../components/topics/Card'
+import About from '~/components/homepage/About'
+import Card from '~/components/topics/Card'
 
 export default {
-  components: {
-    Card,
-    About,
-  },
+  components: { About, Card },
   layout: 'default',
   async asyncData({ $axios }) {
     try {
