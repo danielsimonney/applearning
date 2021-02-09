@@ -55,72 +55,7 @@
         <div>
           {{ post.body }}
         </div>
-        <div class="mt-5 subtitle-2">
-          {{ post.comments.length }} comments
-          <v-btn
-            v-show="post.comments.length!=0"
-            icon
-            @click="show = !show"
-          >
-            <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-          </v-btn>
-        </div>
-        <v-expand-transition>
-          <div v-show="show">
-            <comment
-              v-for="(comment,index) in post.comments"
-              :key="index"
-              class="mt-3 mb-3"
-              :comment="comment"
-            />
-            <div>
-              <p>Write your comment</p>
-              <v-textarea
-                v-model="commentAnswer"
-                label="Be polite and not more than 250 characters"
-                placeholder="write your answer here"
-                hint="Be polite"
-                outlined
-                rows="3"
-                row-height="45"
-                class="mb-5"
-              />
-              <create-button
-                color="primary"
-                text="Post your comment mdi"
-                :loading="loadingstate"
-                :disabled="loadingstate"
-                @click="create"
-              > 
-                mdi-comment
-              </create-button>
-            </div>
-          </div>
-        </v-expand-transition>
-        <div v-show="post.comments.length==0">
-          <div>
-            <p>Write your comment</p>
-            <v-textarea
-              v-model="commentAnswer"
-              placeholder="write your answer here"
-              label="Be polite and not more than 250 characters"
-              hint="Be polite"
-              outlined
-              rows="3"
-              row-height="45"
-              class="mb-5"
-            />
-            <create-button
-              color="primary"
-              text="Post your comment"
-              :loading="loadingstate"
-              :disabled="loadingstate"
-              @click="create"
-            >
-              mdi-comment
-            </create-button>
-          </div>
-        </div>
+        <comment :comments="post.comments" />
         <v-divider class="mb-5 mt-5" />
       </v-card-text>
     </v-list-item>
@@ -128,12 +63,13 @@
 </template>
 
 <script>
+import Comment from '../comment/Comment'
 import AcceptModal from '../UiElements/AcceptModal.vue'
 import AvatarNormal from '../UiElements/AvatarNormal.vue'
 import AvatarRounded from '../UiElements/AvatarRounded.vue'
 import CreateButton from '../UiElements/CreateButton.vue'
 export default {
-  components: { AvatarNormal, AvatarRounded, AcceptModal, CreateButton },
+  components: { AvatarNormal, AvatarRounded, AcceptModal, CreateButton, Comment },
   props: {
     isBetter: {
       type: Number,

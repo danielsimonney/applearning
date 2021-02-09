@@ -16,7 +16,6 @@
           text
           @click="$emit('agree')"
         >
-          >
           Disagree
         </v-btn>
         <v-btn
@@ -24,7 +23,6 @@
           text
           @click="$emit('disagree')"
         >
-          >
           Agree
         </v-btn>
       </v-card-actions>

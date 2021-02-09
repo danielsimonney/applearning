@@ -29,7 +29,7 @@
 
     <check-box-tags
       v-model="form.tags"
-      :tags="tags"
+      :items="allTags"
     />
     <v-file-input
       outlined
@@ -53,13 +53,11 @@ import TextInput from '../../components/UiElements/TextInput.vue'
 export default {
   components: { TextInput, BaseButton, CheckBoxTags },
   async asyncData({ $axios }) {
-    console.log('hi')
+    // console.log('hi')
     try {
-      let finaleData = {}
-      let { data } = await $axios.$get('/tags')
-      finaleData.existant = data
+      const { data } = await $axios.$get('/tags')
       return {
-        tags: finaleData,
+        tags: data,
       }
     } catch (err) {
       console.log(err)
@@ -75,6 +73,14 @@ export default {
         tags: [],
       },
     }
+  },
+  computed: {
+    allTags() {
+      return this.tags.map(item => ({
+        text: item.name,
+        value: item.id,
+      }))
+    },
   },
   methods: {
     toggleCheckbox(state, id) {

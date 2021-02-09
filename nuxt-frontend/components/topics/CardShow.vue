@@ -7,21 +7,6 @@
   >
     <v-list-item>
       <v-card-text>
-        <create-button
-          :to="`/topics/${topic.id}/edit`"
-          color="warning"
-          text="Edit"
-        >
-          mdi-pencil
-        </create-button>
-
-        <create-button
-          text="delete"
-          color="error"
-          @click="dialog=true"
-        >
-          mdi-delete
-        </create-button>
         <accept-modal
           v-if="dialog"
           title="Are you sure you really want to supress this topic ??"
@@ -29,9 +14,42 @@
           @agree="dialog=false"
           @disagree="dialog=false"
         />
-        <v-card-title class="mb-0 pb-0 mr-0 pl-0 font-weight-bold">
-          {{ topic.title }}
-        </v-card-title>
+        
+         
+        <v-toolbar
+          dense
+          flat
+          color="transparent"
+        >
+          <v-toolbar-title class="text-wrap">
+            {{ topic.title }}
+          </v-toolbar-title>
+
+          <v-spacer />
+
+          <option-button
+            :to="`/topics/${topic.id}/edit`"
+            text="Edit"
+            color="warning"
+            name="mdi-pencil"
+          />
+
+
+          <option-button
+            text="delete"
+            name="mdi-delete"
+            color="error"
+            @click="dialog=true"
+          />
+        </v-toolbar>
+             
+           
+            
+              
+
+            
+
+
         <div class="mb-5 mt-5">
           <v-card-text class="pl-0 d-flex flex-row align-center">
             <v-avatar
@@ -97,9 +115,9 @@
 
 <script>
 import AcceptModal from '../UiElements/AcceptModal.vue'
-import CreateButton from '../UiElements/CreateButton.vue'
+import OptionButton from '../UiElements/optionButton.vue'
 export default {
-  components: { CreateButton, AcceptModal },
+  components: { AcceptModal, OptionButton },
   props: {
     topic: {
       type: Object,
