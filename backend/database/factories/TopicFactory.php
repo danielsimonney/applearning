@@ -23,14 +23,14 @@ class TopicFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Topic $topic) {
-            $height = 400;
-            $width = 400;
-
-            // TODO: make the height and width dynamic between (200, 800) with a step of 100
-            $url = "https://picsum.photos/{$width}/{$height}";
-            $topic
-                ->addMediaFromUrl($url)
-                ->toMediaCollection('auctions');
+            for ($nbImage = 0; $nbImage < 4; $nbImage++) {
+                $height = mt_rand(2, 8) * 100;
+                $width = mt_rand(2, 8) * 100;
+                $url = "https://picsum.photos/{$width}/{$height}";
+                $topic
+                    ->addMediaFromUrl($url)
+                    ->toMediaCollection('topicsimages');
+            }
         });
     }
 
