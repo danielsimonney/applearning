@@ -25,7 +25,7 @@ class PostFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Post $post) {
-            for ($nbImage = 0; $nbImage < 2; $nbImage++) {
+            for ($nbImage = 0; $nbImage < mt_rand(0, 2); $nbImage++) {
                 $height = mt_rand(2, 8) * 100;
                 $width = mt_rand(2, 8) * 100;
                 $url = "https://picsum.photos/{$width}/{$height}";
