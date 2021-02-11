@@ -23,9 +23,7 @@ class LikeFactory extends Factory
     public function definition()
     {
         return [
-            "is_liked" => $this->faker->boolean(),
-            'likeable_id' => Topic::factory(),
-            'likeable_type' => Topic::class,
+            "is_liked" => $this->faker->boolean()
         ];
     }
 }

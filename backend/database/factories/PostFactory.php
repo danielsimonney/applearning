@@ -19,23 +19,6 @@ class PostFactory extends Factory
     protected $model = Post::class;
 
     /**
-     * Configure the model factory.
-     *
-     * @return $this
-     */
-    public function configure()
-    {
-        return $this->afterCreating(function (Post $post) {
-            // TODO: Add a random size of the height and weight of the image
-            // But the size modulo 100 should be 0
-            $url = 'https://picsum.photos/400/400';
-            $post
-                ->addMediaFromUrl($url)
-                ->toMediaCollection('posts');
-        });
-    }
-
-    /**
      * Define the model's default state.
      *
      * @return array
