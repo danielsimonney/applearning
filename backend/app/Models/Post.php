@@ -25,6 +25,11 @@ class Post extends Model implements HasMedia
 
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->morphToMany(Like::class, 'likeable');
     }
 }

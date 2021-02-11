@@ -1,12 +1,13 @@
 <template>
   <v-navigation-drawer
     permanent
+    class="rightBar"
     width="300px"
     color="transparent"
   >
     <div class="d-flex flex-column">
       <v-btn
-      
+        to="/topics/create"
         class="mb-3 mt-3"
         color="blue"
         dark

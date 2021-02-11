@@ -19,6 +19,7 @@ class Topic extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'body' => $this->body,
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
             'posts' => PostResource::collection($this->posts),

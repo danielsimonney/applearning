@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Orderable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Topic extends Model
+class Topic extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     use HasFactory;
     use Orderable;
 
@@ -24,12 +27,17 @@ class Topic extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag');
+        return $this->belongsToMany(Tag::class);
     }
 
-    public function comments()
+    public function likes()
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function bestAnswer()
+    {
+        return $this->belongsTo(Post::class, 'answer_id');
     }
 
     // Supprime les entrees de la table pivot au delete d'un topic

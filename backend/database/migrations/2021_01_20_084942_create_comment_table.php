@@ -17,7 +17,8 @@ class CreateCommentTable extends Migration
             $table->id();
             $table->text('body');
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->morphs('commentable');
+            $table->bigInteger('post_id')->unsigned()->index();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

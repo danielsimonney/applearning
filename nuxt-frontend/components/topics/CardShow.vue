@@ -67,15 +67,7 @@
           </v-card-text> 
         </div>
         <div>
-          (content of  the topic)
-          Is there a cleaner way than foreach to get an array of all "label" values?
-          $methods[0]['label'] = 'test';
-          $methods[0]['nr']    = 99;
-          $methods[1]['label'] = 'whatever';
-          $methods[1]['nr']    = 10;
-          foreach($methods as $method) {
-          $methodsLabel[] = $method['label'];
-          }
+          {{ topic.body }}
         </div>
         <div class="mt-5 subtitle-2 d-flex flex-row justify-space-between align-center">
           <div class="d-flex flex-row">

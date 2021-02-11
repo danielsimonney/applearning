@@ -24,6 +24,7 @@ class TopicFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
+            'body' => $this->faker->sentence(75),
             'user_id' => User::factory()
         ];
     }

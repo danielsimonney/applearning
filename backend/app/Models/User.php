@@ -29,6 +29,13 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+
+    public function ownLike(Like $like)
+    {
+        return $this->id === $like->user->id;
+    }
+
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

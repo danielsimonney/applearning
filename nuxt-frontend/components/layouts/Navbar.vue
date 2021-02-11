@@ -34,23 +34,28 @@
           />
         </v-col>
         <v-col
-          class="d-flex justify-end"
+          class="d-flex justify-center"
           cols="3"
           offset="1"
         >
           <v-btn
             v-if="authPage"
+            class="ml-4"
             to="/"
           >
             Homepage
           </v-btn>
 
           <template v-else>
-            <v-btn v-if="isAuthenticated">
+            <v-btn
+              v-if="isAuthenticated"
+              class="ml-4"
+            >
               Account
             </v-btn>
             <v-btn
               v-else
+              class="ml-4"
               to="/auth"
             >
               Authentification
