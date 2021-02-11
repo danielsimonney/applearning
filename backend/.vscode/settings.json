@@ -2,4 +2,5 @@
   "php-cs-fixer.executablePath": "vendor/bin/php-cs-fixer",
   "editor.formatOnSave": true,
   "php-cs-fixer.config": ".php_cs",
+  "phpcs.executablePath": "vendor/bin/phpcs",
 }
