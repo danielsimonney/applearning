@@ -29,6 +29,7 @@ class TopicController extends Controller
     {
         $topic = new Topic;
         $topic->title = $request->title;
+        $topic->body = $request->body;
         $topic->user()->associate($request->user());
 
         // $tag= Tag::find($request->tag);
