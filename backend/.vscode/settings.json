@@ -1,6 +1,10 @@
 {
-  "php-cs-fixer.executablePath": "vendor/bin/php-cs-fixer",
+//   "php-cs-fixer.executablePath": "vendor/bin/php-cs-fixer",
   "editor.formatOnSave": true,
   "php-cs-fixer.config": ".php_cs",
-  "phpcs.executablePath": "vendor/bin/phpcs",
+//   "phpcs.executablePath": "vendor/bin/phpcs",
+  "php-cs-fixer.exclude": [
+      "vendor",
+      "database/seeders"
+  ]
 }

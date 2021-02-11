@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Like;
+use App\Models\Topic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LikeFactory extends Factory
@@ -23,6 +24,8 @@ class LikeFactory extends Factory
     {
         return [
             "is_liked" => $this->faker->boolean(),
+            'likeable_id' => Topic::factory(),
+            'likeable_type' => Topic::class,
         ];
     }
 }
