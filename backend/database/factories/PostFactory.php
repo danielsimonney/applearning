@@ -24,12 +24,12 @@ class PostFactory extends Factory
      */
     public function configure()
     {
-        return $this->afterCreating(function (Topic $topic) {
+        return $this->afterCreating(function (Post $post) {
             for ($nbImage = 0; $nbImage < 2; $nbImage++) {
                 $height = mt_rand(2, 8) * 100;
                 $width = mt_rand(2, 8) * 100;
                 $url = "https://picsum.photos/{$width}/{$height}";
-                $topic
+                $post
                     ->addMediaFromUrl($url)
                     ->toMediaCollection('postsimages');
             }
