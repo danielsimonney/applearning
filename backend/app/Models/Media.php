@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\MediaCollections\Models\Media as ModelsMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as BaseMedia;
 
-class Media extends ModelsMedia
+class Media extends BaseMedia
 {
     use HasFactory;
 }
