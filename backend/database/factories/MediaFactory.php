@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Media;
+use App\Models\Topic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MediaFactory extends Factory
@@ -30,6 +31,12 @@ class MediaFactory extends Factory
             "disk" => "media",
             "conversions_disk" => "media",
             "size" => $this->faker->numberBetween(70000, 1000000),
+            'model_type' => Topic::class,
+            'model_id' => Topic::factory(),
+            'manipulations' => [],
+            'custom_properties' => [],
+            'responsive_images' => []
+
         ];
     }
 }

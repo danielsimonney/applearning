@@ -14,7 +14,7 @@ class AddAnswerToTopicsTable extends Migration
     public function up()
     {
         Schema::table('topics', function (Blueprint $table) {
-            $table->unsignedBigInteger('answer_id')->index()->after('user_id');
+            $table->unsignedBigInteger('answer_id')->index()->after('user_id')->nullable();
             $table->timestamp('answer_at')->after('body');
             $table->foreign('answer_id')->references('id')->on('posts');
         });
