@@ -67,3 +67,23 @@
 <style>
 
 </style>
+
+
+
+
+
+
+
+
+
+
+<div class="mb-5 mt-5">
+          <avatar-normal
+          v-if="isBetter==0"
+            :postlist="post"
+          />
+           <avatar-rounded
+            v-else
+            :postlist="post"
+          /> 
+        </div>
