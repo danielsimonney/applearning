@@ -16,6 +16,25 @@ class TopicFactory extends Factory
     protected $model = Topic::class;
 
     /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (Topic $topic) {
+            $height = 400;
+            $width = 400;
+
+            // TODO: make the height and width dynamic between (200, 800) with a step of 100
+            $url = "https://picsum.photos/{$width}/{$height}";
+            $topic
+                ->addMediaFromUrl($url)
+                ->toMediaCollection('auctions');
+        });
+    }
+
+    /**
      * Define the model's default state.
      *
      * @return array
@@ -25,7 +44,7 @@ class TopicFactory extends Factory
         return [
             'title' => $this->faker->sentence(3),
             'body' => $this->faker->sentence(75),
-            'user_id' => User::factory()
+            'user_id' => User::factory(),
         ];
     }
 }
