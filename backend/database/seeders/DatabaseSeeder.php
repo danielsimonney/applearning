@@ -33,20 +33,20 @@ class DatabaseSeeder extends Seeder
             return (random_int(config('seeder.' . $identifier)[0], config('seeder.' . $identifier)[1]));
         }
 
-        $nbTopics = config('seeder.seed_topics_count');
-        $nbUsers = config('seeder.seed_users_count');
-        $nbPosts = halfBetween('seed_topics_posts_count');
-        $nbComments = halfBetween('seed_comments_count');
-        $nbTags = halfBetween('seed_tags_count');
-        $nbLikesTopics = halfBetween('seed_topics_likes_count');
-        $nbLikesPosts = halfBetween('seed_posts_likes_count');
+        $topicsCount = config('seeder.seed_topics_count');
+        $usersCount = config('seeder.seed_users_count');
+        $postsCount = halfBetween('seed_topics_posts_count');
+        $commentsCount = halfBetween('seed_comments_count');
+        $tagsCount = halfBetween('seed_tags_count');
+        $topicLikesCount = halfBetween('seed_topics_likes_count');
+        $postLikesCount = halfBetween('seed_posts_likes_count');
 
-        User::factory()->count($nbUsers)->create();
-        Topic::factory()->count($nbTopics)->create();
-        Post::factory()->count($nbPosts)->create();
-        Comment::factory()->count($nbComments)->create();
-        Like::factory()->count($nbLikesPosts)->create();
-        Like::factory()->count($nbLikesTopics)->create();
-        Tag::factory()->count($nbTags)->create();
+        User::factory()->count($usersCount)->create();
+        Topic::factory()->count($topicsCount)->create();
+        Post::factory()->count($postsCount)->create();
+        Comment::factory()->count($commentsCount)->create();
+        Like::factory()->count($postLikesCount)->create();
+        Like::factory()->count($topicLikesCount)->create();
+        Tag::factory()->count($tagsCount)->create();
     }
 }
