@@ -28,18 +28,15 @@ class DatabaseSeeder extends Seeder
 
         // 4) Finally to need to chain all the factories to create all the items
 
-        function halfBetween($identifier)
-        {
-            return (random_int(config('seeder.' . $identifier)[0], config('seeder.' . $identifier)[1]));
-        }
 
         $topicsCount = config('seeder.seed_topics_count');
         $usersCount = config('seeder.seed_users_count');
-        $postsCount = halfBetween('seed_topics_posts_count');
-        $commentsCount = halfBetween('seed_comments_count');
-        $tagsCount = halfBetween('seed_tags_count');
-        $topicLikesCount = halfBetween('seed_topics_likes_count');
-        $postLikesCount = halfBetween('seed_posts_likes_count');
+        $tagsCount = config('seeder.seed_tags_count');
+        $postsCount = random_int(...config('seeder.seed_topics_posts_count'));
+        $commentsCount = random_int(...config('seeder.seed_comments_count'));
+        $topicTagsCount = random_int(...config('seeder.seed_topic_tags_count'));
+        $topicLikesCount = random_int(...config('seeder.seed_topics_likes_count'));
+        $postLikesCount = random_int(...config('seeder.seed_posts_likes_count'));
 
         User::factory()->count($usersCount)->create();
         Topic::factory()->count($topicsCount)->create();
