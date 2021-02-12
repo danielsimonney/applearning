@@ -9,6 +9,7 @@ use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Reset database
+        Artisan::call('migrate:fresh');
+
+        // Clear old media
+        Artisan::call('media-library:clear');
+
         // 1) Create env variables to contain the number of Model that you want to seed in the .env
         // SEED_USERS_COUNT = 10
         // SEED_POSTS_COUNT = 10
@@ -32,16 +39,17 @@ class DatabaseSeeder extends Seeder
         $topicsCount = config('seeder.seed_topics_count');
         $usersCount = config('seeder.seed_users_count');
         $tagsCount = config('seeder.seed_tags_count');
-        $postsCount = random_int(...config('seeder.seed_topics_posts_count'));
-        $commentsCount = random_int(...config('seeder.seed_comments_count'));
+        $topicPostsCount = random_int(...config('seeder.seed_topic_posts_count'));
+        $postCommentsCount = random_int(...config('seeder.seed_post_comments_count'));
         $topicTagsCount = random_int(...config('seeder.seed_topic_tags_count'));
-        $topicLikesCount = random_int(...config('seeder.seed_topics_likes_count'));
-        $postLikesCount = random_int(...config('seeder.seed_posts_likes_count'));
+        $topicLikesCount = random_int(...config('seeder.seed_topic_likes_count'));
+        $postLikesCount = random_int(...config('seeder.seed_post_likes_count'));
+
 
         User::factory()->count($usersCount)->create();
         Topic::factory()->count($topicsCount)->create();
-        Post::factory()->count($postsCount)->create();
-        Comment::factory()->count($commentsCount)->create();
+        Post::factory()->count($topicPostsCount)->create();
+        Comment::factory()->count($postCommentsCount)->create();
         Like::factory()->count($postLikesCount)->create();
         Like::factory()->count($topicLikesCount)->create();
         Tag::factory()->count($tagsCount)->create();
