@@ -48,6 +48,5 @@ class DatabaseSeeder extends Seeder
         Like::factory()->count($nbLikesPosts)->create();
         Like::factory()->count($nbLikesTopics)->create();
         Tag::factory()->count($nbTags)->create();
-        User::factory()->count(40)->create();
     }
 }
