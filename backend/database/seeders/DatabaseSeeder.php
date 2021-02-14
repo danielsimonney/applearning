@@ -35,7 +35,6 @@ class DatabaseSeeder extends Seeder
 
         // 4) Finally to need to chain all the factories to create all the items
 
-
         $topicsCount = config('seeder.seed_topics_count');
         $usersCount = config('seeder.seed_users_count');
         $tagsCount = config('seeder.seed_tags_count');
@@ -45,13 +44,33 @@ class DatabaseSeeder extends Seeder
         $topicLikesCount = random_int(...config('seeder.seed_topic_likes_count'));
         $postLikesCount = random_int(...config('seeder.seed_post_likes_count'));
 
+        // User::factory()->count($usersCount)->create();
+        // Topic::factory()->count($topicsCount)->create();
+        // Post::factory()->count($topicPostsCount)->create();
+        // Comment::factory()->count($postCommentsCount)->create();
+        // Like::factory()->count($postLikesCount)->create();
+        // Like::factory()->count($topicLikesCount)->create();
+        // Tag::factory()->count($tagsCount)->create();
 
-        User::factory()->count($usersCount)->create();
-        Topic::factory()->count($topicsCount)->create();
-        Post::factory()->count($topicPostsCount)->create();
-        Comment::factory()->count($postCommentsCount)->create();
-        Like::factory()->count($postLikesCount)->create();
-        Like::factory()->count($topicLikesCount)->create();
-        Tag::factory()->count($tagsCount)->create();
+        User::factory()
+            ->count($usersCount)
+            ->create();
+
+        Topic::factory()
+            ->count($topicsCount)
+            ->hasTags($topicTagsCount)
+            ->hasLikes($topicLikesCount)
+            ->has(
+                Post::factory()
+                    ->count($topicPostsCount)
+                    ->has(Comment::factory()->count($postCommentsCount))
+                    ->hasLikes($postLikesCount, function (array $attributes, Post $post) {
+                        return [
+                            'likeable_id' => $post->id,
+                            'likeable_type' => get_class($post),
+                        ];
+                    })
+            )
+            ->create();
     }
 }

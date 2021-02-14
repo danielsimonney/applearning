@@ -23,7 +23,7 @@ class TopicFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Topic $topic) {
-            for ($nbImage = 0; $nbImage < mt_rand(0, 4); $nbImage++) {
+            for ($nbImage = 0; $nbImage < mt_rand(0, 4); ++$nbImage) {
                 $height = mt_rand(2, 8) * 100;
                 $width = mt_rand(2, 8) * 100;
                 $url = "https://picsum.photos/{$width}/{$height}";
