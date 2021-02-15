@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -31,6 +33,33 @@ class TopicFactory extends Factory
                     ->addMediaFromUrl($url)
                     ->toMediaCollection('topicsimages');
             }
+            $users = User::all();
+            $collectionPosts = Post::factory()
+                ->count(random_int(...config('seeder.seed_topic_posts_count')))
+                ->for($users->random())
+                ->for($topic)
+                ->has(
+                    Comment::factory()
+                        ->count(random_int(...config('seeder.seed_post_comments_count')))
+                        ->for($users->random())
+                )
+                ->hasLikes(
+                    random_int(...config('seeder.seed_post_likes_count')),
+                    function (array $attributes, Post $post) {
+                        $users = User::all();
+                        return [
+                            'likeable_id' => $post->id,
+                            'likeable_type' => get_class($post),
+                            'user_id' => $users->pluck('id')->random()
+                        ];
+                    }
+                )->create();
+
+            $idPosts = [];
+
+            $randpost = $collectionPosts->random();
+            $randpost->topicRelated()->save($randpost->topic);
+            var_dump(get_class($this));
         });
     }
 

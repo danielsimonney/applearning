@@ -59,17 +59,15 @@ class DatabaseSeeder extends Seeder
         Topic::factory()
             ->count($topicsCount)
             ->hasTags($topicTagsCount)
-            ->hasLikes($topicLikesCount)
-            ->has(
-                Post::factory()
-                    ->count($topicPostsCount)
-                    ->has(Comment::factory()->count($postCommentsCount))
-                    ->hasLikes($postLikesCount, function (array $attributes, Post $post) {
-                        return [
-                            'likeable_id' => $post->id,
-                            'likeable_type' => get_class($post),
-                        ];
-                    })
+            ->hasLikes(
+                random_int(...config('seeder.seed_post_likes_count')),
+                function (array $attributes, Topic $topic) {
+                    $users = User::all();
+                    return [
+                        'likeable_id' => $topic->id,
+                        'user_id' => $users->pluck('id')->random()
+                    ];
+                }
             )
             ->create();
     }

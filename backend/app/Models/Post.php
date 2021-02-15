@@ -33,4 +33,9 @@ class Post extends Model implements HasMedia
     {
         return $this->morphMany(Like::class, 'likeable');
     }
+
+    public function topicRelated()
+    {
+        return $this->hasOne(Topic::class, 'answer_id');
+    }
 }
