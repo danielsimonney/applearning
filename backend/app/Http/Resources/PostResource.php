@@ -21,6 +21,7 @@ class PostResource extends JsonResource
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
             'user' => $this->user,
+            'likes_count' => $this->likes_count,
             'comments' => $this->comments,
             'file' => $this->media->map(function ($media) {
                 return $media->getFullUrl();

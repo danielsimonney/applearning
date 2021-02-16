@@ -22,10 +22,10 @@ class TopicResource extends JsonResource
             'body' => $this->body,
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
-            'posts' => PostResource::collection($this->posts),
-            'tags' => Tag::collection($this->tags),
-            'comments' => $this->comments,
-            'user' => $this->user,
+            'posts_count' => $this->posts_count,
+            'likes_count' => $this->likes_count,
+            'tags' => TagResource::collection($this->tags),
+            'user' => new UserResource($this->user),
         ];
     }
 }

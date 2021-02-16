@@ -27,6 +27,7 @@ Route::group(['prefix' => 'topics'], function () {
     Route::delete('/{topic}', 'TopicController@destroy')->middleware('auth:api');
     // Post route groups
     Route::group(['prefix' => '/{topic}/posts'], function () {
+        Route::get('/', 'PostController@index');
         Route::post('/', 'PostController@store')->middleware('auth:api');
         Route::patch('/{post}', 'PostController@update')->middleware('auth:api');
         Route::delete('/{post}', 'PostController@destroy')->middleware('auth:api');

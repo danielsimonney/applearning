@@ -16,12 +16,52 @@ use App\Exports\TagExport;
 use App\Exports\TopicExport;
 use App\Exports\UsersExport;
 use App\Http\Requests\ExportRequest;
+use App\Http\Resources\PostsCollectionResource;
 use App\Imports\PostsImport;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Excel as ExcelExcel;
+
 
 class PostController extends Controller
 {
-    //
+
+    public function index(Topic $topic)
+    {
+
+        $posts = $topic->posts()->withCount(['likes' => function (Builder $query) {
+            $query->select((count($query->where('is_liked', '1'))) - (count($query->where('is_liked', '0'))));
+
+            // (($query->where('is_liked', '1')) - ($query->where('is_liked', '0')));
+        }])->paginate(15);
+
+        return new PostsCollectionResource($posts);
+
+
+        // TODO: Fetch topic's posts $topic->posts()->paginate();
+        // 'data' => [],
+        // 'meta' => [],
+
+        // 'meta' => [..., topic]
+
+        // Create a new resource collection php artisan make:resource --collection
+
+        //  new PostCollection($)
+
+        // $post = new Post;
+        // $post->body = $request->body;
+        // $post->user()->associate($request->user());
+        // $topic->posts()->save($post);
+
+        // $media = collect($request->medias)
+        //     ->map(function ($file) use ($post) {
+
+        //         return $post->addMedia($file)->toMediaCollection();
+        //     });
+
+        // return new ResourcesPost($topic->posts()->paginate());
+    }
+
     public function store(StorePostRequest $request, Topic $topic)
     {
         $post = new Post;

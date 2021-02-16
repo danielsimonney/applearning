@@ -9,6 +9,14 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Post extends Model implements HasMedia
 {
+
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 20;
+
     use HasFactory;
     use InteractsWithMedia;
 

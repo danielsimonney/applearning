@@ -7,22 +7,22 @@ use App\Models\Topic;
 use Illuminate\Http\Request;
 use App\Http\Requests\TopicCreateRequest;
 use App\Http\Requests\UpdateTopicRequest;
-use App\Http\Resources\Tag as ResourcesTag;
-use App\Http\Resources\Topic as TopicRessource;
+use App\Http\Resources\TagResource;
+use App\Http\Resources\TopicResource;
 use App\Models\Tag;
 
 class TopicController extends Controller
 {
     public function index()
     {
-        $topics = Topic::latestFirst()->paginate(5);
-        return TopicRessource::collection($topics);
+        $topics = Topic::latestFirst()->withCount('posts')->paginate(5);
+        return TopicResource::collection($topics);
     }
 
     public function tags()
     {
         $tags = Tag::all();
-        return (ResourcesTag::collection($tags));
+        return (TagResource::collection($tags));
     }
 
     public function store(TopicCreateRequest $request)
@@ -42,12 +42,12 @@ class TopicController extends Controller
         $topic->tags()->attach($request->tags);
         $topic->posts()->save($post);
 
-        return new TopicRessource($topic);
+        return new TopicResource($topic);
     }
 
     public function show(Topic $topic)
     {
-        return new TopicRessource($topic);
+        return new TopicResource($topic);
     }
 
     public function update(UpdateTopicRequest $request, Topic $topic)
@@ -60,7 +60,7 @@ class TopicController extends Controller
             $topic->tags()->sync($request->tags);
         }
         $topic->save();
-        return new TopicRessource($topic);
+        return new TopicResource($topic);
     }
 
     public function destroy(Topic $topic)
