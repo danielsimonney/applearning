@@ -9,14 +9,29 @@ use App\Http\Requests\TopicCreateRequest;
 use App\Http\Requests\UpdateTopicRequest;
 use App\Http\Resources\TagResource;
 use App\Http\Resources\TopicResource;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\Tag;
 
 class TopicController extends Controller
 {
-    public function index()
+    public function index($orderBy, $filter = null)
     {
-        $topics = Topic::latestFirst()->withCount('posts')->paginate(5);
-        return TopicResource::collection($topics);
+
+        $topics = Topic::where('title', 'like', "%" . $filter . "%")->withCount('posts')->withCount([
+            'likes' => function (Builder $builder) {
+                $builder->where('is_liked', true);
+            }, "likes as dislikes_count" => function (Builder $builder) {
+                $builder->where('is_liked', false);
+            }
+        ]);
+
+        if ($orderBy == "asc") {
+            $p = $topics->orderBy('created_at', 'asc')->paginate(5);
+        } else {
+            $p = $topics->orderBy('created_at', 'desc')->paginate(5);
+        }
+
+        return TopicResource::collection($p);
     }
 
     public function tags()

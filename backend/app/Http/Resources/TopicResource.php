@@ -23,9 +23,13 @@ class TopicResource extends JsonResource
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
             'posts_count' => $this->posts_count,
-            'likes_count' => $this->likes_count,
+            'likes' => $this->likes_total,
+            'voted' => $this->hasUserVoted($request->user()),
             'tags' => TagResource::collection($this->tags),
             'user' => new UserResource($this->user),
+            'files' => $this->media->map(function ($media) {
+                return $media->getFullUrl();
+            })
         ];
     }
 }

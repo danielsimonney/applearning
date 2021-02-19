@@ -42,6 +42,25 @@ class Post extends Model implements HasMedia
         return $this->morphMany(Like::class, 'likeable');
     }
 
+    public function getLikesTotalAttribute()
+    {
+        return $this->likes_count - $this->dislikes_count;
+    }
+
+    public function hasUserVoted($user)
+    {
+        $voted = null;
+        if ($user == null) {
+            return $voted;
+        }
+        foreach ($this->likes as $value) {
+            if ($user->ownLike($value)) {
+                $voted = $value->is_liked;
+            }
+        }
+        return $voted;
+    }
+
     public function topicRelated()
     {
         return $this->hasOne(Topic::class, 'answer_id');

@@ -35,9 +35,29 @@ class Topic extends Model implements HasMedia
         return $this->morphMany(Like::class, 'likeable');
     }
 
+
     public function bestAnswer()
     {
         return $this->belongsTo(Post::class, 'answer_id');
+    }
+
+    public function getLikesTotalAttribute()
+    {
+        return $this->likes_count - $this->dislikes_count;
+    }
+
+    public function hasUserVoted($user)
+    {
+        $voted = null;
+        if ($user == null) {
+            return $voted;
+        }
+        foreach ($this->likes as $value) {
+            if ($user->ownLike($value)) {
+                $voted = $value->is_liked;
+            }
+        }
+        return $voted;
     }
 
     // Supprime les entrees de la table pivot au delete d'un topic

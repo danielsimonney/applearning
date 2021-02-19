@@ -20,10 +20,11 @@ class PostResource extends JsonResource
             'body' => $this->body,
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
-            'user' => $this->user,
-            'likes_count' => $this->likes_count,
-            'comments' => $this->comments,
-            'file' => $this->media->map(function ($media) {
+            'user' => new UserResource($this->user),
+            'likes' => $this->likes_total,
+            'voted' => $this->hasUserVoted($request->user()),
+            'comments_count' => $this->comments_count,
+            'files' => $this->media->map(function ($media) {
                 return $media->getFullUrl();
             })
         ];
