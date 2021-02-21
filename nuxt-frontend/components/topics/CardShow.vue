@@ -42,14 +42,6 @@
             @click="dialog=true"
           />
         </v-toolbar>
-             
-           
-            
-              
-
-            
-
-
         <div class="mb-5 mt-5">
           <v-card-text class="pl-0 d-flex flex-row align-center">
             <v-avatar
@@ -97,7 +89,7 @@
           </div>
         </div>
         <p class="mt-8">
-          {{ topic.posts.length }} answers
+          {{ topic.posts_count }} answers
         </p>
         <v-divider class="mb-5 mt-5" />
       </v-card-text>
@@ -126,6 +118,7 @@ export default {
   },
   mounted() {
     this.likescount = Math.floor(Math.random() * (1 - 1000) + 1000)
+    console.log(this.topic)
   },
   methods: {
     count(nb) {

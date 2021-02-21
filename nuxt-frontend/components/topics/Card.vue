@@ -37,14 +37,13 @@
               <v-list-item>
                 <v-card-text>
                   <v-card-title class="blue--text display-1 mb-4 mr-0 px-0 font-weight-bold">
-                    <nuxt-link :to="{name:'topics-id',params:{id:topic.id}}">
+                    <nuxt-link :to="{name:'topics-topic',params:{topic:topic.id}}">
                       {{ topic.title }}
                     </nuxt-link>
                   </v-card-title>
-                  
-                  
+                                    
                   <div>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, nisi. Quaerat fuga ducimus voluptatibus eius delectus magnam, dignissimos neque, repudiandae, numquam eos iusto? Tenetur, maxime doloribus! Exercitationem ratione deserunt quasi!
+                    {{ topic.body }}
                   </div>
                   <v-divider class="mb-5 mt-5" />
                   <div class="d-flex align-center">
@@ -58,6 +57,8 @@
                       </v-avatar> Posted by <span class="blue--text">{{ topic.user.email }}</span> 
 
                     </span>
+
+
                     <span class="ml-5">
                       {{ topic.created_at }}
                     </span>

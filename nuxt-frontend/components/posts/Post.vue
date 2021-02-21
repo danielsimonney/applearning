@@ -55,7 +55,10 @@
         <div>
           {{ post.body }}
         </div>
-        <comment :comments="post.comments" />
+        <comment
+          :id="post.id"
+          :comment-number="post.comments_count"
+        />
         <v-divider class="mb-5 mt-5" />
       </v-card-text>
     </v-list-item>

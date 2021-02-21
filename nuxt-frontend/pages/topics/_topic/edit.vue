@@ -53,7 +53,7 @@ export default {
   async asyncData({ params, $axios }) {
     try {
       const response = await $axios.$get('/tags')
-      const { data } = await $axios.$get(`/topics/${params.id}`)
+      const { data } = await $axios.$get(`/topics/${params.topic}`)
       console.log(data)
       return {
         tags: response.data,

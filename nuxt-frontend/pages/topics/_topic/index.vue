@@ -4,9 +4,9 @@
     color="#FAFAFA"
   > -->
   <div>
-    <card-show :topic="topic" />
+    <card-show :topic="meta.topic" />
     <post
-      v-for="(post,index) in topic.posts"
+      v-for="(post,index) in posts"
       :key="index"
       class="mt-3 mb-3"
       :is-better="index"
@@ -36,14 +36,12 @@ import BaseButton from '../../../components/UiElements/BaseButton.vue'
 export default {
   components: { Post, BaseButton, FormPost, CardShow },
   async asyncData({ params, $axios }) {
-    console.log('arar')
-    console.log(params.id)
-
     try {
-      const { data } = await $axios.$get(`/topics/${params.id}`)
-      console.log(data)
+      const { data, meta } = await $axios.$get(`/topics/${params.topic}/posts`)
+      console.log(meta, 'its meta')
       return {
-        topic: data,
+        meta: meta,
+        posts: data,
       }
     } catch (err) {
       console.log(err)
@@ -52,9 +50,18 @@ export default {
   data() {
     return {
       show: false,
-      topic: '',
+      posts: [],
+      meta: null,
       body: '',
     }
+  },
+  computed: {
+    topic() {
+      return this.meta?.topic
+    },
+  },
+  mounted() {
+    console.log(this.topic)
   },
 }
 </script>
